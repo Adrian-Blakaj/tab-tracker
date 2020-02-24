@@ -1,0 +1,77 @@
+<template>
+  <panel title="Song Metadata">
+    <v-layout>
+      <v-flex xs6>
+        <div class="song-title">Title: {{ song.title }}</div>
+        <div class="song-artist">Artist: {{ song.artist }}</div>
+        <div class="song-genre">Genre: {{ song.genre }}</div>
+
+        <v-btn
+          class="cyan"
+          dark
+          @click="
+            navigateTo({ name: 'song-edit', params: { songId: song.id } })
+          "
+          >Edit</v-btn
+        >
+      </v-flex>
+      <v-flex xs6>
+        <img class="album-image" :src="song.albumImageUrl" />
+        <br />
+        {{ song.album }}
+      </v-flex>
+    </v-layout>
+  </panel>
+</template>
+
+<script>
+import Panel from "@/components/Panel";
+
+export default {
+  props: ["song"],
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    }
+  },
+  components: {
+    Panel
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.song {
+  padding: 20px;
+  height: 330px;
+  overflow: hidden;
+}
+
+.song-title {
+  font-size: 30px;
+}
+
+.song-artist {
+  font-size: 24px;
+}
+
+.song-genre {
+  font-size: 18px;
+}
+.album-image {
+  width: 70%;
+  margin: 0 auto;
+}
+
+textarea {
+  width: 100%;
+  font-family: monospace;
+  border: none;
+  height: 600px;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
+  padding: 40px;
+}
+</style>
