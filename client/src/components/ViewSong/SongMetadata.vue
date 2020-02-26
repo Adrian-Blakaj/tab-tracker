@@ -12,8 +12,21 @@
           @click="
             navigateTo({ name: 'song-edit', params: { songId: song.id } })
           "
-          >Edit</v-btn
-        >
+        >Edit</v-btn>
+
+        <v-btn
+          v-if="isUserLoggedIn && !bookmark"
+          class="cyan"
+          dark
+          @click="setAsBookmark()"
+        >Set as Bookmark</v-btn>
+
+        <v-btn
+          v-if="isUserLoggedIn && bookmark"
+          class="cyan"
+          dark
+          @click="unSetAsBookmark()"
+        >Unset as Bookmark</v-btn>
       </v-flex>
       <v-flex xs6>
         <img class="album-image" :src="song.albumImageUrl" />
@@ -25,17 +38,62 @@
 </template>
 
 <script>
-import Panel from "@/components/Panel";
+import { mapState } from "vuex";
+import BookmarksService from "../../services/BookmarksService";
 
 export default {
   props: ["song"],
+  data() {
+    return {
+      bookmark: null
+    };
+  },
+  computed: {
+    ...mapState(["isUserLoggedIn"])
+  },
+  watch: {
+    async song() {
+      if (!this.isUserLoggedIn) {
+        return;
+      }
+      try {
+        const bookmarks = (
+          await BookmarksService.index({
+            songId: this.song.id
+          })
+        ).data;
+        if (bookmarks.length) {
+          this.bookmark = bookmarks[0];
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    async setAsBookmark() {
+      try {
+        this.bookmark = (
+          await BookmarksService.post({
+            SongId: this.song.id,
+            UserId: this.$store.state.user.id
+          })
+        ).data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async unSetAsBookmark() {
+      try {
+        await BookmarksService.delete(this.bookmark.id);
+        this.bookmark = null;
+      } catch (error) {
+        console.log(error);
+      }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
