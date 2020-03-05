@@ -1,7 +1,7 @@
 <template>
   <div class="white elevation-2">
-    <v-toolbar flat dense class="cyan" dark>
-      <v-toolbar-title>{{title}}</v-toolbar-title>
+    <v-toolbar flat dense class="indigo" dark>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
       <slot name="action" />
     </v-toolbar>
 
@@ -18,5 +18,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
+<style scoped></style>

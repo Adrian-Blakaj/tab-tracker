@@ -7,26 +7,29 @@
         <div class="song-genre">Genre: {{ song.genre }}</div>
 
         <v-btn
-          class="cyan"
+          class="indigo"
           dark
           @click="
             navigateTo({ name: 'song-edit', params: { songId: song.id } })
           "
-        >Edit</v-btn>
+          >Edit</v-btn
+        >
 
         <v-btn
           v-if="isUserLoggedIn && !bookmark"
-          class="cyan"
+          class="indigo"
           dark
           @click="setAsBookmark()"
-        >Set as Bookmark</v-btn>
+          >Set as Bookmark</v-btn
+        >
 
         <v-btn
           v-if="isUserLoggedIn && bookmark"
-          class="cyan"
+          class="indigo"
           dark
           @click="unSetAsBookmark()"
-        >Unset as Bookmark</v-btn>
+          >Unset as Bookmark</v-btn
+        >
       </v-flex>
       <v-flex xs6>
         <img class="album-image" :src="song.albumImageUrl" />

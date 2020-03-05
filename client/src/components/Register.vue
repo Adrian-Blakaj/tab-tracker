@@ -3,6 +3,10 @@
     <v-flex xs6 offset-xs3>
       <panel title="Register">
         <form name="tab-tracker-form" autocomplete="off">
+          <v-text-field label="First Name"></v-text-field>
+          <br />
+          <v-text-field label="Last Name"></v-text-field>
+          <br />
           <v-text-field label="Email" v-model="email"></v-text-field>
           <br />
           <v-text-field
@@ -15,7 +19,7 @@
         <br />
         <div class="danger-alert" v-html="error"></div>
         <br />
-        <v-btn class="cyan" dark @click="register">Register</v-btn>
+        <v-btn class="indigo" dark @click="register">Register</v-btn>
       </panel>
     </v-flex>
   </v-layout>

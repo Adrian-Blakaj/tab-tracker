@@ -12,7 +12,7 @@
         <br />
         <div class="danger-alert" v-html="error"></div>
         <br />
-        <v-btn class="cyan" dark @click="login">Login</v-btn>
+        <v-btn class="indigo" dark @click="login">Login</v-btn>
       </panel>
     </v-flex>
   </v-layout>

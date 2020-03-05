@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar fixed class="cyan" dark>
+  <v-toolbar fixed class="indigo" dark>
     <v-toolbar-title class="mr-4">
       <span class="home" @click="navigateTo({ name: 'songs' })"
         >TabTracker</span
@@ -11,7 +11,7 @@
         >Browse</v-btn
       >
     </v-toolbar-items>
-
+    <songs-search-panel />
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import SongsSearchPanel from "./Songs/SongsSearchPanel";
 export default {
   methods: {
     navigateTo(route) {
@@ -43,6 +44,9 @@ export default {
         name: "songs"
       });
     }
+  },
+  components: {
+    SongsSearchPanel
   }
 };
 </script>

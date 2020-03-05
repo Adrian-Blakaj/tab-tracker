@@ -5,11 +5,11 @@
       slot="action"
       fab
       light
-      medium
+      small
       absolute
       right
       middle
-      class="cyan accent-2"
+      class="indigo accent-1"
     >
       <v-icon>add</v-icon>
     </v-btn>
@@ -21,7 +21,7 @@
           <div class="song-genre">{{ song.genre }}</div>
 
           <v-btn
-            class="cyan"
+            class="indigo"
             dark
             @click="navigateTo({ name: 'song', params: { songId: song.id } })"
             >View</v-btn

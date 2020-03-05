@@ -26,6 +26,8 @@
           :rules="[required]"
           v-model="song.album"
         ></v-text-field>
+
+        <!-- TODO: INPUT FIELD FOR IMAGE UPLOADING -->
         <v-text-field
           label="Album Image URL"
           required
@@ -60,7 +62,7 @@
 
       <div class="danger-alert" v-if="error">{{ error }}</div>
 
-      <v-btn class="cyan" dark @click="create">Create Song</v-btn>
+      <v-btn class="indigo" dark @click="create">Create Song</v-btn>
     </v-flex>
   </v-layout>
 </template>
